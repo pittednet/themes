@@ -46,6 +46,20 @@ get_header(); ?>
 
 		<?php endif; ?>
 
+// Display Recipes CPT
+// Added by Richard Warnett
+				<?php
+					$args = array(‘post_type’ => ‘recipes’, ‘posts_per_page’ => ‘3’);
+					$myQuery = new WP_Query($args);
+				?>
+				<?php if ($myQuery->have_posts() : ?>
+					<?php while ($myQuery->have_posts() : $myQuery->the_post() ?>
+						// Dislpay the podcast title
+						echo the_title();
+					<?php endwhile;  wp_reset_postdata(); ?>
+				<?php endif; ?>
+//End of addition for Recipes CPT
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
